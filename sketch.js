@@ -34,8 +34,34 @@ function draw() {
     background(gardenImage);
     //condition to evalute if tom and jerry collide
 
-     
+    if(tom.x - jerry.x < (tom.width - jerry.width)/2)
+    { 
+        tom.velocityX=0;
+        tom.addAnimation("tomLastImage", tomImage3);
+        tom.x =300;
+        tom.scale=0.2;
+        tom.changeAnimation("tomLastImage");
+        jerry.addAnimation("jerryLastImage", jerryImage3);
+        jerry.scale=0.15;
+        jerry.changeAnimation("jerryLastImage");
+    }  
+    
 
     drawSprites();
 }
 
+
+function keyPressed(){
+
+  //For moving and changing animation
+  if(keyCode === LEFT_ARROW){
+    tom.velocityX = -5; 
+    tom.addAnimation("tomRunning", tomImage2);
+    tom.changeAnimation("tomRunning");
+    
+    jerry.addAnimation("jerryTeasing", jerryImage2);
+    jerry.frameDelay = 25;
+    jerry.changeAnimation("jerryTeasing");
+}
+
+}
